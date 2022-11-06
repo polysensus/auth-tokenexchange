@@ -1,11 +1,11 @@
-name: Build and push to iona's container registry
+name: Build and push to the polysensus container registry
 on: [push]
 permissions:
   id-token: write
   contents: read
 jobs:
   cd:
-    name: Build and push to iona's container registry
+    name: Build and push to the polysensus container registry
     runs-on: ubuntu-latest
     steps:
       - uses: 'actions/checkout@v3'
@@ -15,12 +15,12 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           token_format: 'access_token'
-          workload_identity_provider: 'projects/871349271977/locations/global/workloadIdentityPools/github-oidc-1/providers/github-provider'
-          service_account: 'gha-cd-tokenator@iona-1.iam.gserviceaccount.com'
+          workload_identity_provider: 'projects/723759996909/locations/global/workloadIdentityPools/github-oidc-1/providers/github-provider'
+          service_account: 'gha-cd-auth-tokenexchange@hoy-dev-1.iam.gserviceaccount.com'
 
       - uses: 'docker/login-action@v1'
         with:
-          registry: 'eu.gcr.io/iona-1' # or REGION-docker.pkg.dev
+          registry: 'eu.gcr.io/hoy-dev-1' # or REGION-docker.pkg.dev
           username: 'oauth2accesstoken'
           password: '${{ steps.auth.outputs.access_token }}'
 
@@ -39,7 +39,7 @@ jobs:
       #      "https://storage.googleapis.com/upload/storage/v1/b/artifacts.iona-1.appspot.com/o?uploadType=media&name=test/hello.${{ github.run_number }}.txt"
 
       - run: |-
-          echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://eu.gcr.io/iona-1
+          echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://eu.gcr.io/hoy-dev-1
 
 
       - id: build_id
@@ -59,4 +59,4 @@ jobs:
           push: true
           context: tokenendpoint
           file: tokenendpoint/Dockerfile
-          tags: eu.gcr.io/hoy-dev-1/auth-traefikforward:${{ steps.build_id.outputs.BUILD_ID }}
+          tags: eu.gcr.io/hoy-dev-1/auth-tokenexchange:${{ steps.build_id.outputs.BUILD_ID }}
