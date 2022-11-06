@@ -16,7 +16,7 @@ build:
     useBuildkit: true
 
   artifacts:
-    - image: tokenendpoint
+    - image: auth-tokenexchange
       context: tokenendpoint
 
 deploy:

@@ -59,4 +59,4 @@ jobs:
           push: true
           context: tokenendpoint
           file: tokenendpoint/Dockerfile
-          tags: eu.gcr.io/iona-1/tokenendpoint:${{ steps.build_id.outputs.BUILD_ID }}
+          tags: eu.gcr.io/hoy-dev-1/auth-traefikforward:${{ steps.build_id.outputs.BUILD_ID }}
