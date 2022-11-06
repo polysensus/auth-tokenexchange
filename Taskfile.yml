@@ -38,7 +38,7 @@ tasks:
         CLUSTER="{{.CLUSTER}}"
         [ -z "${CLUSTER}" ] && CLUSTER=$(kubectl config get-contexts ${CONTEXT} --no-headers=true | tr -s ' ' | cut -d ' ' -f3)
         SKAFFOLD_DEFAULT_REPO="{{.SKAFFOLD_DEFAULT_REPO}}"
-        [ -z "${SKAFFOLD_DEFAULT_REPO}" ] && SKAFFOLD_DEFAULT_REPO="eu.gcr.io/${CONTEXT}"
+        [ -z "${SKAFFOLD_DEFAULT_REPO}" ] && SKAFFOLD_DEFAULT_REPO="eu.gcr.io/hoy-dev-1"
         CONTEXT_NAMESPACE={{.CONTEXT_NAMESPACE}}
         [ -z "${CONTEXT_NAMESPACE}" ] && CONTEXT_NAMESPACE=$(echo -n ${CONTEXT} | cut -d '-' -f1)
         TOKEN_PROVIDER={{.TOKEN_PROVIDER}}
