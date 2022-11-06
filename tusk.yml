@@ -6,11 +6,11 @@ options:
 
   stsurl:
     short: u
-    default: https://sts.iona.thaumagen.io/token
+    default: https://sts.hoy.polysensus.io/token
 
   nodeurl:
     short: "n"
-    default: https://iona.thaumagen.io/node/ethnode0
+    default: https://hoy.polysensus.io/node/ethnode0
 
   token:
     short: t
@@ -120,7 +120,7 @@ tasks:
               --data-urlencode "subject_token=${TOKEN}" \
               --data-urlencode "subject_token_type=urn:ietf:params:oauth:token-type:id_token" \
               --data-urlencode "audience=ethnode0" \
-              --data-urlencode "resource=https://iona.thaumagen.com/node/ethnode0")
+              --data-urlencode "resource=https://hoy.polysensus.io/node/ethnode0")
             ${verbose} && echo $EXCHANGED
             echo $EXCHANGED | jq -r .access_token
 

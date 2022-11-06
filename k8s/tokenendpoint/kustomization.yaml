@@ -1,6 +1,6 @@
 commonLabels:
   app.kubernetes.io/part-of: tokenator
-  repository: github.com-robinbryce-tokenator
+  repository: github.com-polysensus-auth-tokenexchange
 resources:
   - service.yaml
   - deployment.yaml

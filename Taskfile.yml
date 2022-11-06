@@ -73,16 +73,16 @@ tasks:
     vars:
       CONTEXT: '{{.CONTEXT | default (env "CONTEXT") }}'
       CONTEXT_NAMESPACE: '{{.CONTEXT_NAMESPACE | default (env "CONTEXT_NAMESPACE") }}'
-      NAMESPACE: '{{.NAMESPACE | default (env "NAMESPACE") | default "stage-iona-iam" }}'
+      NAMESPACE: '{{.NAMESPACE | default (env "NAMESPACE") | default "hoy-iam-dev" }}'
       TAG: '{{.TAG | default (env "TAG") | default "master-latest" }}'
       SKAFFOLD_DEFAULT_REPO: '{{.SKAFFOLD_DEFAULT_REPO | default (env "SKAFFOLD_DEFAULT_REPO") }}'
-      APPNAME: '{{.APPNAME | default (env "APPNAME") | default "tokenendpoint"}}'
+      APPNAME: '{{.APPNAME | default (env "APPNAME") | default "tokenexchange"}}'
       PYENV: '{{.PYENV | default (env "PYENV") | default "env"}}'
       PROFILE: '{{.PROFILE | default (env "PROFILE")}}'
       PORT: '{{.PORT | default (env "PORT") | default "3000"}}'
       HOST: '{{.HOST | default (env "HOST") | default "http://127.0.0.1:3000"}}'
       CLIENT_SCOPES: '{{.CLIENT_SCOPES | default (env "CLIENT_SCOPES") | default "email openid rpc://admin_nodeInfo rpc://eth_blockNumber rpc://eth_* rpc://rpc_modules"}}'
-      DOMAIN: '{{.DOMAIN | default (env "DOMAIN") | default "thaumagen.io"}}'
+      DOMAIN: '{{.DOMAIN | default (env "DOMAIN") | default "polysensus.io"}}'
       TOKEN_PROVIDER: '{{.TOKEN_PROVIDER | default (env "TOKEN_PROVIDER") }}'
 
   generate:
