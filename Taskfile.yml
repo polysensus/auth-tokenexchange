@@ -76,7 +76,7 @@ tasks:
       NAMESPACE: '{{.NAMESPACE | default (env "NAMESPACE") | default "hoy-iam-dev" }}'
       TAG: '{{.TAG | default (env "TAG") | default "master-latest" }}'
       SKAFFOLD_DEFAULT_REPO: '{{.SKAFFOLD_DEFAULT_REPO | default (env "SKAFFOLD_DEFAULT_REPO") }}'
-      APPNAME: '{{.APPNAME | default (env "APPNAME") | default "tokenexchange"}}'
+      APPNAME: '{{.APPNAME | default (env "APPNAME") | default "auth-tokenexchange"}}'
       PYENV: '{{.PYENV | default (env "PYENV") | default "env"}}'
       PROFILE: '{{.PROFILE | default (env "PROFILE")}}'
       PORT: '{{.PORT | default (env "PORT") | default "3000"}}'
@@ -135,20 +135,20 @@ tasks:
         namespace: ${NAMESPACE}
         resources:
           #- ./namespace.yaml
-          - ./../../tokenendpoint/default-config
-          - ./../../tokenendpoint
+          - ./../../base/default-config
+          - ./../../base
         configMapGenerator:
-          - name: tokenendpoint
+          - name: auth-tokenexchange
             behavior: merge
             files:
               - clients.json
             literals:
               - PROVIDER=$TOKEN_PROVIDER
         secretGenerator:
-          - name: tokenendpoint-provider-signing-key
+          - name: auth-tokenexchange-provider-signing-key
             files:
               - provider-signing-key.json
-          - name: tokenendpoint-clientid-secret
+          - name: auth-tokenexchange-clientid-secret
             envs:
               - clientidsecret.env
         EOF

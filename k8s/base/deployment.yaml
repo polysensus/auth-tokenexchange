@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tokenendpoint
+  name: auth-tokenexchange
   labels:
-    app: tokenendpoint
+    app: auth-tokenexchange
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tokenendpoint
+      app: auth-tokenexchange
   template:
     metadata:
       labels:
-        app: tokenendpoint
+        app: auth-tokenexchange
     spec:
       volumes:
         - name: config
@@ -20,7 +20,7 @@ spec:
           # sources:
       containers:
         - name: service
-          image: tokenendpoint
+          image: auth-tokenexchange
           ports:
             - containerPort: 3000
 
@@ -28,33 +28,33 @@ spec:
             - name: PROVIDER
               valueFrom:
                 configMapKeyRef:
-                  name: tokenendpoint
+                  name: auth-tokenexchange
                   key: PROVIDER
             - name: APIKEYSTORE_ADDRESS
               valueFrom:
                 configMapKeyRef:
-                  name: tokenendpoint
+                  name: auth-tokenexchange
                   key: APIKEYSTORE_ADDRESS
             - name: PATH_PREFIX
               valueFrom:
                 configMapKeyRef:
-                  name: tokenendpoint
+                  name: auth-tokenexchange
                   key: PATH_PREFIX
             - name: SIGNING_SECRET_FILE
               valueFrom:
                 configMapKeyRef:
-                  name: tokenendpoint
+                  name: auth-tokenexchange
                   key: SIGNING_SECRET_FILE
             - name: CLIENTS_FILE
               valueFrom:
                 configMapKeyRef:
-                  name: tokenendpoint
+                  name: auth-tokenexchange
                   key: CLIENTS_FILE
 
             - name: CLIENT_SCOPES
               valueFrom:
                 configMapKeyRef:
-                  name: tokenendpoint
+                  name: auth-tokenexchange
                   key: CLIENT_SCOPES
 
           volumeMounts:

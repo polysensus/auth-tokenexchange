@@ -1,9 +1,9 @@
 configMapGenerator:
-  - name: tokenendpoint
+  - name: auth-tokenexchange
     literals:
       - SIGNING_SECRET_FILE=/config/provider-signing-key.json
       - CLIENTS_FILE=/config/clients.json
       - PATH_PREFIX=""
       - PROVIDER=https://localhost
-      - APIKEYSTORE_ADDRESS=apikeystore:8401
+      - APIKEYSTORE_ADDRESS=auth-apikeystore:8401
       - CLIENT_SCOPES=["email", "openid", "rpc://admin_nodeInfo", "rpc://eth_blockNumber", "rpc://eth_*", "rpc://rpc_modules"]
